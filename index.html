@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Morning Briefs</title>
+  <style>
+    :root {
+      --navy:      #0f2342;
+      --navy-mid:  #1a3a5c;
+      --gray-50:   #f8fafc;
+      --gray-100:  #f1f5f9;
+      --gray-200:  #e2e8f0;
+      --gray-500:  #64748b;
+      --gray-700:  #334155;
+      --gray-900:  #0f172a;
+      --white:     #ffffff;
+      --radius:    12px;
+      --shadow:    0 1px 3px rgba(0,0,0,.10), 0 1px 2px -1px rgba(0,0,0,.10);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,.10), 0 4px 6px -4px rgba(0,0,0,.10);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", system-ui, sans-serif;
+      background: var(--gray-50);
+      color: var(--gray-900);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    /* ---- Header ---- */
+    header {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      padding: 2.5rem 1.5rem 2rem;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .header-inner {
+      max-width: 880px;
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .eyebrow {
+      font-size: .6875rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.50);
+      margin-bottom: .375rem;
+    }
+    .site-title {
+      font-size: 1.625rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -.025em;
+    }
+    .site-subtitle {
+      font-size: .8125rem;
+      color: rgba(255,255,255,.55);
+      margin-top: .25rem;
+    }
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.15);
+      color: rgba(255,255,255,.80);
+      font-size: .75rem;
+      font-weight: 500;
+      padding: .375rem .75rem;
+      border-radius: 999px;
+      white-space: nowrap;
+      align-self: flex-start;
+      margin-top: .25rem;
+    }
+    .status-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #4ade80;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: .4; }
+    }
+
+    /* ---- Main ---- */
+    main {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin-bottom: 1.25rem;
+    }
+    .section-label {
+      font-size: .6875rem;
+      font-weight: 700;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      white-space: nowrap;
+    }
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--gray-200);
+    }
+    .briefs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.25rem;
+    }
+
+    /* ---- Card ---- */
+    .card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: box-shadow .2s ease, transform .2s ease;
+    }
+    .card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+    }
+    .card-top-bar { height: 3px; }
+    .card-content { padding: 1.625rem; }
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: .75rem;
+      margin-bottom: .875rem;
+    }
+    .card-badge {
+      display: inline-block;
+      font-size: .6875rem;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      padding: .25rem .625rem;
+      border-radius: 4px;
+    }
+    .card-updated {
+      font-size: .75rem;
+      color: var(--gray-500);
+      white-space: nowrap;
+      padding-top: .125rem;
+    }
+    .card-title {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      letter-spacing: -.015em;
+      margin-bottom: .625rem;
+    }
+    .card-desc {
+      font-size: .8125rem;
+      color: var(--gray-500);
+      line-height: 1.65;
+      margin-bottom: 1.375rem;
+    }
+    .card-actions {
+      display: flex;
+      gap: .625rem;
+      flex-wrap: wrap;
+    }
+
+    /* ---- Buttons ---- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .375rem;
+      padding: .5625rem 1.125rem;
+      border-radius: 7px;
+      font-size: .8125rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: filter .15s, transform .1s;
+      white-space: nowrap;
+    }
+    .btn:hover  { filter: brightness(1.08); }
+    .btn:active { transform: scale(.98); }
+    .btn-primary {
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+    .btn-secondary {
+      background: var(--gray-100);
+      color: var(--gray-700);
+      border: 1px solid var(--gray-200);
+    }
+    .btn-secondary:hover { background: var(--gray-200); filter: none; }
+    .btn-disabled { opacity: .5; cursor: default; pointer-events: none; }
+
+    /* ---- Footer ---- */
+    footer {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 1.25rem 1.5rem 3rem;
+      border-top: 1px solid var(--gray-200);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+    .footer-text { font-size: .75rem; color: var(--gray-500); }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 680px) {
+      .briefs-grid { grid-template-columns: 1fr; }
+      header { padding: 1.75rem 1rem 1.5rem; }
+      .header-inner { flex-direction: column; }
+      main { padding: 1.75rem 1rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div>
+      <div class="eyebrow">Market Intelligence</div>
+      <div class="site-title">Morning Briefs</div>
+      <div class="site-subtitle">March 2, 2026</div>
+    </div>
+    <div class="live-badge">
+      <span class="status-dot"></span>
+      Auto-updated daily
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="section-header">
+    <span class="section-label">Latest Reports</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="briefs-grid">
+    
+    <div class="card">
+      <div class="card-top-bar" style="background:#2563eb;"></div>
+      <div class="card-content">
+        <div class="card-header">
+          <span class="card-badge" style="background:#eff6ff;color:#2563eb;">
+            Macro
+          </span>
+          <span class="card-updated">Updated Sunday, March 1, 2026 at 8:03 pm ET</span>
+        </div>
+        <div class="card-title">Macro Morning Brief</div>
+        <div class="card-desc">Daily overview of market moves, macro drivers, upcoming data releases, and key headlines across equities, rates, and commodities.</div>
+        <div class="card-actions">
+          <a class="btn btn-primary" style="background:#2563eb;" href="pdfs/macro_morning_brief.pdf" target="_blank" rel="noopener">View Report &#8599;</a>
+          <a class="btn btn-secondary" href="pdfs/macro_morning_brief.pdf" download>Download PDF</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-top-bar" style="background:#059669;"></div>
+      <div class="card-content">
+        <div class="card-header">
+          <span class="card-badge" style="background:#ecfdf5;color:#059669;">
+            Real Estate
+          </span>
+          <span class="card-updated">Updated Sunday, March 1, 2026 at 8:33 pm ET</span>
+        </div>
+        <div class="card-title">RE Morning Brief</div>
+        <div class="card-desc">REIT sector intelligence across 11 subsectors — performance, rate environment (10Y/30Y/MBS), key catalysts, and subsectors to watch.</div>
+        <div class="card-actions">
+          <a class="btn btn-primary" style="background:#059669;" href="pdfs/re_morning_brief.pdf" target="_blank" rel="noopener">View Report &#8599;</a>
+          <a class="btn btn-secondary" href="pdfs/re_morning_brief.pdf" download>Download PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <span class="footer-text">Published automatically each morning.</span>
+  <span class="footer-text">Last generated: Monday, March 2, 2026 at 2:43 pm ET</span>
+</footer>
+
+</body>
+</html>
