@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stock Pitch &mdash; MSFT</title>
+  <style>
+    :root {
+      --navy:      #0f2342;
+      --navy-mid:  #1a3a5c;
+      --gold:      #c9a84c;
+      --gray-50:   #f8fafc;
+      --gray-100:  #f1f5f9;
+      --gray-200:  #e2e8f0;
+      --gray-500:  #64748b;
+      --gray-700:  #334155;
+      --gray-900:  #0f172a;
+      --white:     #ffffff;
+      --radius:    12px;
+      --shadow:    0 1px 3px rgba(0,0,0,.10), 0 1px 2px -1px rgba(0,0,0,.10);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,.10), 0 4px 6px -4px rgba(0,0,0,.10);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", system-ui, sans-serif;
+      background: var(--gray-50);
+      color: var(--gray-900);
+      min-height: 100vh;
+    }
+    header {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      padding: 2.5rem 1.5rem 2rem;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .header-inner {
+      max-width: 880px;
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .eyebrow {
+      font-size: .6875rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .375rem;
+    }
+    .site-title {
+      font-size: 1.625rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -.025em;
+    }
+    .site-subtitle {
+      font-size: .8125rem;
+      color: rgba(255,255,255,.55);
+      margin-top: .25rem;
+    }
+    .back-link {
+      font-size: .8125rem;
+      color: rgba(255,255,255,.65);
+      text-decoration: none;
+      align-self: flex-start;
+      margin-top: .375rem;
+      padding: .375rem .75rem;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 6px;
+      transition: background .15s;
+    }
+    .back-link:hover { background: rgba(255,255,255,.08); }
+    main {
+      max-width: 540px;
+      margin: 3rem auto;
+      padding: 0 1.5rem 4rem;
+    }
+    .gate-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    .lock-icon {
+      font-size: 2.25rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .gate-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: .5rem;
+    }
+    .gate-desc {
+      font-size: .8125rem;
+      color: var(--gray-500);
+      margin-bottom: 1.75rem;
+      line-height: 1.6;
+    }
+    .pw-form {
+      display: flex;
+      gap: .625rem;
+    }
+    .pw-input {
+      flex: 1;
+      padding: .625rem .875rem;
+      border: 1px solid var(--gray-200);
+      border-radius: 7px;
+      font-size: .875rem;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .pw-input:focus { border-color: var(--navy); }
+    .pw-btn {
+      padding: .625rem 1.25rem;
+      background: var(--navy);
+      color: #fff;
+      border: none;
+      border-radius: 7px;
+      font-size: .875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .15s;
+    }
+    .pw-btn:hover { background: var(--navy-mid); }
+    .pw-error {
+      margin-top: .875rem;
+      font-size: .8125rem;
+      color: #dc2626;
+    }
+    .hidden { display: none; }
+    .content-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+    .content-header {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      padding: 1.25rem 1.5rem;
+      border-bottom: 3px solid var(--gold);
+    }
+    .content-title {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .content-subtitle {
+      font-size: .75rem;
+      color: rgba(255,255,255,.6);
+      margin-top: .2rem;
+    }
+    .file-list {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: .625rem;
+    }
+    .file-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: .875rem 1rem;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--gray-900);
+      transition: box-shadow .15s, transform .1s;
+    }
+    .file-card:hover {
+      box-shadow: var(--shadow);
+      transform: translateY(-1px);
+    }
+    .file-icon { font-size: 1.5rem; }
+    .file-label { font-size: .8125rem; font-weight: 600; color: var(--navy); }
+    .file-name { font-size: .75rem; color: var(--gray-500); margin-top: .1rem; }
+    .file-arrow {
+      margin-left: auto;
+      font-size: 1rem;
+      color: var(--gray-500);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div>
+      <div class="eyebrow">Private Research</div>
+      <div class="site-title">Stock Pitch &mdash; MSFT</div>
+      <div class="site-subtitle">Restricted access</div>
+    </div>
+    <a href="index.html" class="back-link">&#8592; Morning Briefs</a>
+  </div>
+</header>
+
+<main>
+  <div id="gate">
+    <div class="gate-card">
+      <span class="lock-icon">🔒</span>
+      <div class="gate-title">Password Required</div>
+      <div class="gate-desc">This research is private. Enter the password to access the files.</div>
+      <form class="pw-form" id="pw-form">
+        <input class="pw-input" type="password" id="pw-input" placeholder="Password" autofocus>
+        <button class="pw-btn" type="submit">Unlock</button>
+      </form>
+      <div class="pw-error hidden" id="pw-error">Incorrect password. Try again.</div>
+    </div>
+  </div>
+
+  <div id="content" class="hidden">
+    <div class="content-card">
+      <div class="content-header">
+        <div class="content-title">Stock Pitch &mdash; MSFT</div>
+        <div class="content-subtitle">Click any file to download</div>
+      </div>
+      <div class="file-list">
+        
+        <a class="file-card" href="pitch/stock_pitch_MSFT.pdf" download>
+          <span class="file-icon">📄</span>
+          <div>
+            <div class="file-label">Investment Memo</div>
+            <div class="file-name">stock_pitch_MSFT.pdf</div>
+          </div>
+          <span class="file-arrow">&#8599;</span>
+        </a>
+        <a class="file-card" href="pitch/stock_pitch_MSFT.xlsx" download>
+          <span class="file-icon">📊</span>
+          <div>
+            <div class="file-label">Financial Model</div>
+            <div class="file-name">stock_pitch_MSFT.xlsx</div>
+          </div>
+          <span class="file-arrow">&#8599;</span>
+        </a>
+        <a class="file-card" href="pitch/stock_pitch_MSFT_v2.pptx" download>
+          <span class="file-icon">📑</span>
+          <div>
+            <div class="file-label">Presentation</div>
+            <div class="file-name">stock_pitch_MSFT_v2.pptx</div>
+          </div>
+          <span class="file-arrow">&#8599;</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+  const HASH = "4502846f2b0708ba711ffbd11548a7d79223c02b9fec3b7863628a72d46ac8b3";
+  document.getElementById("pw-form").addEventListener("submit", async function(e) {
+    e.preventDefault();
+    const pw = document.getElementById("pw-input").value;
+    const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(pw));
+    const hex = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+    if (hex === HASH) {
+      document.getElementById("gate").classList.add("hidden");
+      document.getElementById("content").classList.remove("hidden");
+    } else {
+      document.getElementById("pw-error").classList.remove("hidden");
+      document.getElementById("pw-input").value = "";
+      document.getElementById("pw-input").focus();
+    }
+  });
+</script>
+
+</body>
+</html>
