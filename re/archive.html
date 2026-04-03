@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RE Morning Brief — Archive</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+            background: #f8fafc; color: #0f172a; min-height: 100vh; }
+    header { background: linear-gradient(135deg, #0f2342 0%, #1a3a5c 100%);
+              padding: 2rem 1.5rem 1.75rem; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .hdr { max-width: 720px; margin: 0 auto; }
+    .back { font-size: .8125rem; color: rgba(255,255,255,.6); text-decoration: none;
+             border: 1px solid rgba(255,255,255,.2); border-radius: 6px;
+             padding: .3rem .7rem; display: inline-block; margin-bottom: .75rem; }
+    .back:hover { background: rgba(255,255,255,.08); }
+    .badge { display: inline-block; font-size: .6875rem; font-weight: 700;
+              letter-spacing: .07em; text-transform: uppercase; padding: .2rem .55rem;
+              border-radius: 4px; background: rgba(255,255,255,.12);
+              color: rgba(255,255,255,.85); margin-bottom: .5rem; }
+    h1 { font-size: 1.5rem; font-weight: 700; color: #fff; letter-spacing: -.02em; }
+    main { max-width: 720px; margin: 2.5rem auto; padding: 0 1.5rem 4rem; }
+    .section-hdr { font-size: .6875rem; font-weight: 700; letter-spacing: .10em;
+                   text-transform: uppercase; color: #64748b; margin-bottom: 1rem;
+                   padding-bottom: .5rem; border-bottom: 1px solid #e2e8f0; }
+    .latest-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px;
+                    padding: 1.25rem 1.5rem; margin-bottom: 2rem; display: flex;
+                    align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .75rem;
+                    box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+    .latest-label { font-size: .75rem; font-weight: 600; color: #059669;
+                     text-transform: uppercase; letter-spacing: .06em; margin-bottom: .25rem; }
+    .latest-title { font-size: 1rem; font-weight: 700; color: #0f172a; }
+    .btn { display: inline-flex; align-items: center; gap: .3rem; padding: .5rem 1rem;
+            border-radius: 7px; font-size: .8125rem; font-weight: 600;
+            text-decoration: none; white-space: nowrap; }
+    .btn-view { background: #059669; color: #fff; }
+    .archive-list { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+    .archive-item { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px;
+                     display: flex; align-items: center; justify-content: space-between;
+                     padding: .875rem 1.25rem; transition: box-shadow .15s; }
+    .archive-item:hover { box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+    .archive-item a:first-child { display: flex; align-items: center; gap: .625rem;
+                                   text-decoration: none; color: #0f172a; flex: 1; }
+    .archive-icon { font-size: 1.25rem; }
+    .archive-label { font-size: .9375rem; font-weight: 500; }
+    .archive-dl { font-size: .8125rem; font-weight: 600; color: #059669;
+                   text-decoration: none; padding: .25rem .625rem; border-radius: 5px;
+                   border: 1px solid #059669; white-space: nowrap; }
+    .archive-dl:hover { background: #059669; color: #fff; }
+    .archive-empty { color: #64748b; font-size: .875rem; padding: 1rem 0; font-style: italic; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="hdr">
+    <a class="back" href="../index.html">&#8592; Back to Home</a>
+    <div class="badge">RE Morning Brief</div>
+    <h1>Report Archive</h1>
+  </div>
+</header>
+<main>
+  <div class="section-hdr">Latest Report</div>
+  <div class="latest-card">
+    <div>
+      <div class="latest-label">Most Recent</div>
+      <div class="latest-title">re_morning_brief.pdf</div>
+    </div>
+    <a class="btn btn-view" href="re_morning_brief.pdf" target="_blank" rel="noopener">View &#8599;</a>
+  </div>
+
+  <div class="section-hdr">Past Reports (0 archived)</div>
+  <ul class="archive-list">
+    <li class="archive-empty">No archived reports yet — archives build up over time.</li>
+  </ul>
+</main>
+</body>
+</html>
